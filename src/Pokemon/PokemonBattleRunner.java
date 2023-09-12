@@ -1,5 +1,8 @@
 package Pokemon;
 
+/**
+ * Initializes all the needed systems and gets them running
+ */
 public class PokemonBattleRunner {
     public void run() {
         //Read file and get attacks

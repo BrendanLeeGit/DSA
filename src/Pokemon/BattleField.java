@@ -3,7 +3,7 @@ package Pokemon;
 import java.util.ArrayList;
 
 /**
- * The battleground for the Pokemon
+ * The battleground for the Pokemon. Handles the actual battle systems and mechanics.
  */
 public class BattleField {
     private ArrayList<Pokemon> participants;

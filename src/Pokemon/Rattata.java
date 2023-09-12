@@ -1,5 +1,8 @@
 package Pokemon;
 
+/**
+ * Pokemon subclass just for the Rattata.
+ */
 public class Rattata extends Pokemon implements LevelUpMethod {
 
     public Rattata(String name, String type, double health, double attack, double defense) {

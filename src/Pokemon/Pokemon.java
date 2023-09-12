@@ -3,6 +3,9 @@ package Pokemon;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Class representing the general Pokemon
+ */
 public class Pokemon {
     private String name;
     private String type;
