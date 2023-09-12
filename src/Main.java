@@ -4,6 +4,8 @@ import Pokemon.Rattata;
 public class Main {
     public static void main(String[] args) {
         Rattata rat = new Rattata("Rattata", "Normal", 12, 2, 3);
+        Rattata rat2 = new Rattata("Rattata", "Normal", 12, 2, 3);
+        //BattleField battleField = new BattleField();
 
     }
 }

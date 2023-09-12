@@ -11,15 +11,19 @@ public class FileReader {
     private ArrayList<String[]> values;
 
     public FileReader(){
-        file = new File("Attacks.txt");
+        values = new ArrayList<>();
+    }
+
+    public void readFile(){
+        //Almost like a mini constructor here since we need file name before we initialize variables
+        file = new File("C:\\Users\\brend\\IdeaProjects\\DSAProject\\src\\Pokemon\\Attacks.txt");
         try {
             scan = new Scanner(file);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-    }
 
-    public void readFile(){
+        //Split the contents of the file and record them in values
         int i = 0;
         while (scan.hasNextLine()){
             String lineContent = scan.nextLine();
@@ -27,7 +31,7 @@ public class FileReader {
         }
     }
 
-    //TODO: way to reset arraylist
+    //TODO: way to reset arraylist in order to update attacks at runtime or read different files
 
     public ArrayList<String[]> getValues(){
         return values;
