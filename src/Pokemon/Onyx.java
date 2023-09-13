@@ -1,11 +1,11 @@
 package Pokemon;
 
 /**
- * Pokemon subclass just for the Rattata.
+ * Pokemon subclass just for the Onyx.
  */
-public class Rattata extends Pokemon implements LevelUpMethod {
+public class Onyx extends Pokemon implements LevelUpMethod {
 
-    public Rattata(String name, String type, double health, double attack, double defense) {
+    public Onyx(String name, String type, double health, double attack, double defense) {
         super(name, type, health, attack, defense);
     }
 
@@ -19,8 +19,7 @@ public class Rattata extends Pokemon implements LevelUpMethod {
     }
 
     public void addAttacks(){
-        addAttack("Bite");
-        addAttack("Splash");
+        addAttack("Heavy Slam");
     }
 
 }

@@ -27,7 +27,7 @@ public class FileReader {
         int i = 0;
         while (scan.hasNextLine()){
             String lineContent = scan.nextLine();
-            values.add(lineContent.split(" "));
+            values.add(lineContent.split(","));
         }
     }
 

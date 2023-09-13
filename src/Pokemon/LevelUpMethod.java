@@ -1,5 +1,5 @@
 package Pokemon;
 
 public interface LevelUpMethod {
-    public void LevelUp();
+    public void levelUp();
 }

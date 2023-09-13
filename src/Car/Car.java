@@ -1,7 +1,9 @@
+package Car;
+
 import java.util.ArrayList;
 
 /**
- * Car class bc why not
+ * Car.Car class bc why not
  */
 public class Car {
     private GPS gps;

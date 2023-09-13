@@ -10,15 +10,18 @@ public class PokemonBattleRunner {
         attackCompilation.compileAttacks();
 
         //Create participants and add their attacks
-        Rattata rat = new Rattata("Rattata", "Normal", 12, 2, 3);
+        Rattata rat = new Rattata("Rattata", "Normal", 12, 2, 2);
         rat.addAttacks();
-        Rattata rat2 = new Rattata("Rattata", "Normal", 12, 2, 3);
-        rat2.addAttacks();
+        Onyx onyx= new Onyx("Onyx", "Normal", 20, 2, 4);
+        onyx.addAttacks();
+
+        //Level up Rattata bc he's hella outmatched
+        rat.levelUp();
 
         //Set up and run battlefield
         BattleField battleField = new BattleField();
         battleField.addPokemon(rat);
-        battleField.addPokemon(rat2);
+        battleField.addPokemon(onyx);
         battleField.runCombat();
     }
 }

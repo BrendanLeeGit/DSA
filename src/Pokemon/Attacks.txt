@@ -1,1 +1,3 @@
-Bite 4 Normal
+Bite,4,Normal
+Heavy Slam,6,Normal
+Splash,0,Normal

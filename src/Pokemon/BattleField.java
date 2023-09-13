@@ -35,10 +35,13 @@ public class BattleField {
         //Compute damage and change health accordingly
         //Damage calculation shall be as follows:
         //  originalAttackDamage * attackerAttackDmg / defenderDefense
-        double damageDealt = currentAttack.getDamage();
+        double damageDealt = currentAttack.getDamage()/defender.getStat(2);
 
         //Adjust the defender's hp
         participantHp.set(participantIndexTwo, participantHp.get(participantIndexTwo) - damageDealt);
+
+        //Announce HP
+        System.out.println(defender.getName() + " has " + Math.ceil(participantHp.get(participantIndexTwo)) + " HP!\n");
     }
 
     private boolean isThereWinner(){
@@ -58,12 +61,11 @@ public class BattleField {
         //Begin a loop as the Pokemon begin to hit each other with random abilities
         for(;;){
             attackProcess((i % 2), (i + 1) % 2);
-            i++;
-
             if (isThereWinner()){
-                System.out.println("There is a winner!");
+                System.out.println(participants.get(i % 2).getName() + " is the winner!");
                 break;
             }
+            i++;
         }
     }
 }
