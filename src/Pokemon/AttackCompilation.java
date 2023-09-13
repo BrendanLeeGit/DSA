@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 /**
  * Singleton class for creating the attacks from the text file. Grab an instance of this class for getting attack info.
+ * Static is used since it only needs to be created once, and creating it several times in different points is a waste
+ * of resources.
  */
 public class AttackCompilation {
     private ArrayList<Attack> attackList;
