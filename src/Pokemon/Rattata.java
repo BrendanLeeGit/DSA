@@ -9,6 +9,10 @@ public class Rattata extends Pokemon implements LevelUpMethod {
         super(name, type, health, attack, defense);
     }
 
+    public Rattata() {
+        super("Rattata", "Normal", 12, 2, 2);
+    }
+
     public void levelUp() {
         //Get stats from superclass
         //I think this would be better without a subclass for each Pokemon tbh

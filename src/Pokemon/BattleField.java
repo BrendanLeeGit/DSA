@@ -9,6 +9,7 @@ public class BattleField {
     private ArrayList<Pokemon> participants;
     private ArrayList<Double> participantHp;
     private AttackCompilation attackCompilation;
+    private int participantInt;
 
     public BattleField(){
         participants = new ArrayList<>();
@@ -57,15 +58,15 @@ public class BattleField {
      * This is only for two person combat for now
      */
     public void runCombat(){
-        int i = 0;
+        participantInt = 0;
         //Begin a loop as the Pokemon begin to hit each other with random abilities
         for(;;){
-            attackProcess((i % 2), (i + 1) % 2);
+            attackProcess((participantInt % 2), (participantInt + 1) % 2);
             if (isThereWinner()){
-                System.out.println(participants.get(i % 2).getName() + " is the winner!");
+                System.out.println(participants.get(participantInt % 2).getName() + " is the winner!");
                 break;
             }
-            i++;
+            participantInt++;
         }
     }
 }
