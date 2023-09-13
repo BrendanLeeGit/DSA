@@ -14,6 +14,9 @@ public class FileReader {
         values = new ArrayList<>();
     }
 
+    /**
+     * Reads through the file and builds the values ArrayList with its contents.
+     */
     public void readFile(){
         //Almost like a mini constructor here since we need file name before we initialize variables
         file = new File("C:\\Users\\brend\\IdeaProjects\\DSAProject\\src\\Pokemon\\Attacks.txt");
