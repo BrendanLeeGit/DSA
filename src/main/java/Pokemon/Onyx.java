@@ -13,15 +13,15 @@ public class Onyx extends Pokemon implements LevelUpMethod {
      * @param attack
      * @param defense
      */
-    public Onyx(String name, String type, double health, double attack, double defense) {
-        super(name, type, health, attack, defense);
+    public Onyx(String name, String type, double health, double attack, double defense, double speed) {
+        super(name, type, health, attack, defense, speed);
     }
 
     /**
      * Make a default onyx with default stats.
      */
     public Onyx() {
-        super("Onyx", "Normal", 20, 2, 4);
+        super("Onyx", "Normal", 20, 2, 4, 6);
     }
 
     /**

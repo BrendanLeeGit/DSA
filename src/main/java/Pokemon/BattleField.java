@@ -37,6 +37,7 @@ public class BattleField {
         //Damage calculation shall be as follows:
         //  originalAttackDamage * attackerAttackDmg / defenderDefense
         double damageDealt = currentAttack.getDamage()/defender.getStat(2);
+        System.out.println("It deals " + (int)Math.ceil(damageDealt) + " damage!");
 
         //Adjust the defender's hp
         participantHp.set(participantIndexTwo, participantHp.get(participantIndexTwo) - damageDealt);
@@ -54,11 +55,20 @@ public class BattleField {
         return false;
     }
 
+    private int decideTurnOrder(){
+        if (participants.get(0).getStat(3) >= participants.get(1).getStat(3)){
+            return 0;
+        }
+        else {
+            return 1;
+        }
+    }
+
     /**
      * This is only for two person combat for now
      */
     public void runCombat(){
-        participantInt = 0;
+        participantInt = decideTurnOrder();
         //Begin a loop as the Pokemon begin to hit each other with random abilities
         for(;;){
             attackProcess((participantInt % 2), (participantInt + 1) % 2);
