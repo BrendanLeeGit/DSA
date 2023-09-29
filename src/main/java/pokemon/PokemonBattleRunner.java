@@ -1,4 +1,4 @@
-package Pokemon;
+package pokemon;
 
 /**
  * Initializes all the needed systems and gets them running

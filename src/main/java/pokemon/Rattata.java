@@ -1,4 +1,4 @@
-package Pokemon;
+package pokemon;
 
 /**
  * Pokemon subclass just for the Rattata.

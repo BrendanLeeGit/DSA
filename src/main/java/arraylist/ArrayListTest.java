@@ -3,7 +3,7 @@ package arraylist;
 public class ArrayListTest {
     public void runTest(){
         //Create arraylist
-        OtherArrayList<Integer> oAL = new OtherArrayList<>();
+        DSAArrayList<Integer> oAL = new DSAArrayList<>();
         for (int i = 0; i < 98; i++){
             oAL.add(i);
         }

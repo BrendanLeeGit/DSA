@@ -4,14 +4,14 @@ package arraylist;
  * Custom Array List :D
  * @param <E>   The type of value it'll hold ezpz
  */
-public class OtherArrayList <E>{
+public class DSAArrayList<E>{
     private Object[] originArray;
     private int size;
 
     /**
      * Construct Array List with a default capacity of 10.
      */
-    public OtherArrayList(){
+    public DSAArrayList(){
         originArray = new Object[10];
     }
 
@@ -19,7 +19,7 @@ public class OtherArrayList <E>{
      * Construct an Array List with an inputted and customized size.
      * @param capacity The initial capacity the created Array List will have
      */
-    public OtherArrayList(int capacity){
+    public DSAArrayList(int capacity){
         originArray = new Object[capacity];
     }
 
@@ -119,7 +119,7 @@ public class OtherArrayList <E>{
      */
     public void remove(int index){
         //Move all the elements on the right of the index to the left
-        for (int i = index; i < size; i++){
+        for (int i = index; i < size - 1; i++){
             originArray[i] = originArray[i + 1];
         }
         size--;
@@ -154,10 +154,12 @@ public class OtherArrayList <E>{
         return originArray[index];
     }
 
+    /**
+     * Print the contents of the ArrayList.
+     */
     public void printAll(){
         for (int i = 0; i < size; i++){
-            System.out.println(originArray[i].toString());
+            System.out.println(i + ": " + originArray[i].toString());
         }
     }
-
 }

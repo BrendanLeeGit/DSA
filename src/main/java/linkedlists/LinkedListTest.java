@@ -1,10 +1,15 @@
 package linkedlists;
 
+import java.util.LinkedList;
+
 /**
  * Just a test class to see if my implementation of the LinkedList works properly
  */
 public class LinkedListTest {
     public static void main(String[] args){
+
+        LinkedList<String> l = new LinkedList<>();
+
         SingularlyLinkedList<Integer> singularlyLinkedList = new SingularlyLinkedList<>();
         for (int i = 0; i < 30; i++){
             singularlyLinkedList.addToEnd(i);
