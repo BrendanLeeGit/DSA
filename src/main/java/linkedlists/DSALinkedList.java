@@ -17,6 +17,14 @@ public class DSALinkedList<E> {
     }
 
     /**
+     * Returns the size of the LinkedList.
+     * @return  The size of the LinkedList
+     */
+    public int getSize(){
+        return size;
+    }
+
+    /**
      * Adds a new node to the end of the list with the inputted data.
      * @param data  The data the new node will contain
      */
@@ -30,6 +38,7 @@ public class DSALinkedList<E> {
             //Otherwise, just add a new node to the tail and update the tail reference
             Node<E> newNode = new Node<>(data);
             tail.next = newNode;
+            newNode.prev = tail;
             tail = newNode;
         }
         size++;
@@ -40,7 +49,7 @@ public class DSALinkedList<E> {
      * @param data      The data to be added to the Node
      * @param position  The position of the node where the data is added
      */
-    public void add(E data, int position){
+    public void setData(E data, int position){
         Node<E> tempRef = head;
 
         //Iterate through the list till the desired position and set the data
@@ -86,7 +95,10 @@ public class DSALinkedList<E> {
      * Removes a node from the end of the list.
      */
     public void removeFromEnd(){
-        //TODO: Finish this function bruh
+        Node<E> tailPrev = tail.prev;
+        tailPrev.next = null;
+        tail = tailPrev;
+        size--;
     }
 
     /**
@@ -114,6 +126,7 @@ public class DSALinkedList<E> {
         }
     }
 
+
     /**
      * Node implementation
      * @param <V>
@@ -131,6 +144,25 @@ public class DSALinkedList<E> {
         public Node(V data, Node<V> next){
             this.data = data;
             this.next = next;
+        }
+    }
+
+    private class MyIterator <T> implements MyIterable<T>{
+        Node<T> currentNode;
+
+        public MyIterator(){
+        }
+
+        @Override
+        public T next() {
+            Node<T> temp = currentNode;
+            currentNode = currentNode.next;
+            return temp.data;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return (currentNode.next != null);
         }
     }
 }
