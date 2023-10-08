@@ -4,15 +4,14 @@ package linkedlists;
  * Linked list made in DSA.
  * @param <E>
  */
-public class DSALinkedList<E> {
+public class DSACircularLinkedList<E> {
     private Node<E> head;
-    private Node<E> tail;
     private int size;
 
     /**
      * Constructs a linked list with size 0.
      */
-    public DSALinkedList(){
+    public DSACircularLinkedList(){
         size = 0;
     }
 
@@ -36,10 +35,9 @@ public class DSALinkedList<E> {
         //If the list is empty, initialize first node with the wanted data
         if (size == 0){
             head = new Node<>(data);
-            tail = head;
         }
         else{
-            //Otherwise, just add a new node to the tail and update the tail reference
+            //Otherwise, just add a new node to the previous of the head
             Node<E> newNode = new Node<>(data);
             tail.next = newNode;
             newNode.prev = tail;
@@ -154,7 +152,7 @@ public class DSALinkedList<E> {
     /**
      * Personal iterator for the linked list
      */
-    public class MyIterator implements MyIterable<E>{
+    public class MyIterator implements MyIterable<E> {
         Node<E> currentNode;
 
         private MyIterator(){

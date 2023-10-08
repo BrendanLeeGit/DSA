@@ -6,7 +6,7 @@ Hero
     - Defense
     - Speed
     - Money
-    - Will later implement levels and experience
+    - Implement levels and experience
 
 He can fight monsters
 He can interact with objects
@@ -17,6 +17,7 @@ Monsters
     - Defense
     - Speed
     - Money
+    - Also has levels and experience
 
 Objects can
     - Heal life
