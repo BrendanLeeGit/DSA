@@ -6,6 +6,9 @@ public class CreatureFactory {
     public CreatureFactory(){}
 
     public Creature getCreature(String creatureName){
-        return new Creature();
+        if (creatureName.equals("Goblin")){
+            return null;
+        }
+        return null;
     }
 }

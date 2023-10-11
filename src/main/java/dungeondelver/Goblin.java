@@ -1,5 +1,4 @@
 package dungeondelver;
 
-public class Dungeon {
-
+public class Goblin {
 }

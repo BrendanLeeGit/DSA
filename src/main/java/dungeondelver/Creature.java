@@ -1,6 +1,6 @@
 package dungeondelver;
 
-public class Creature {
+public abstract class Creature {
     private String name;
     private int life;
     private int attack;
@@ -25,6 +25,8 @@ public class Creature {
         speed = 5;
         money = 5;
     }
+
+    public abstract void warCry();
 
     public int getLife() {
         return life;
