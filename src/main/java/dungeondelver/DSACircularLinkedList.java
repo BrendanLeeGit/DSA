@@ -1,6 +1,7 @@
 package dungeondelver;
 
-import linkedlists.MyIterable;
+
+import slotmachine.MyIterable;
 
 /**
  * Linked list made in DSA.

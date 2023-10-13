@@ -1,7 +1,8 @@
 package linkedlists;
 
 /**
- * Linked list made in DSA.
+ * Circular Linked list made in DSA. The main difference here is that I won't use a tail node since it all connects
+ * in a *circle* ofc.
  * @param <E>
  */
 public class DSACircularLinkedList<E> {
@@ -15,8 +16,8 @@ public class DSACircularLinkedList<E> {
         size = 0;
     }
 
-    public MyIterator getIterator(){
-        return new MyIterator();
+    public CustomIterator getIterator(){
+        return new CustomIterator();
     }
 
     /**
@@ -156,10 +157,10 @@ public class DSACircularLinkedList<E> {
     /**
      * Personal iterator for the linked list
      */
-    public class MyIterator implements MyIterable<E> {
+    public class CustomIterator implements MyIterator<E> {
         Node<E> currentNode;
 
-        private MyIterator(){
+        private CustomIterator(){
             currentNode = new Node<>(null, head);
         }
 

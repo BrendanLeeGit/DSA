@@ -16,8 +16,8 @@ public class DSALinkedList<E> {
         size = 0;
     }
 
-    public MyIterator getIterator(){
-        return new MyIterator();
+    public CustomIterator getIterator(){
+        return new CustomIterator();
     }
 
     /**
@@ -154,10 +154,10 @@ public class DSALinkedList<E> {
     /**
      * Personal iterator for the linked list
      */
-    public class MyIterator implements MyIterable<E>{
+    public class CustomIterator implements MyIterator<E> {
         Node<E> currentNode;
 
-        private MyIterator(){
+        private CustomIterator(){
             currentNode = new Node<>(null, head);
         }
 
