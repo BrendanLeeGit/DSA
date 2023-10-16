@@ -21,7 +21,7 @@ public abstract class Creature {
         name = "Default";
         life = 10;
         attack = 5;
-        defense = 5;
+        defense = 4;
         speed = 5;
         money = 5;
     }

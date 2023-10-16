@@ -28,6 +28,10 @@ public class DSALinkedList<E> {
         return size;
     }
 
+    public E getHeadData(){
+        return head.data;
+    }
+
     /**
      * Adds a new node to the end of the list with the inputted data.
      * @param data  The data the new node will contain
@@ -103,6 +107,17 @@ public class DSALinkedList<E> {
         tailPrev.next = null;
         tail = tailPrev;
         size--;
+    }
+
+    /**
+     * For queue I suppose.
+     * @return  The data of the removed node
+     */
+    public E removeFromBeginning(){
+        Node<E> temp = head;
+        head = head.next;
+        size--;
+        return temp.data;
     }
 
     /**

@@ -7,8 +7,13 @@ public class CreatureFactory {
 
     public Creature getCreature(String creatureName){
         if (creatureName.equals("Goblin")){
-            return null;
+            return new Goblin();
         }
+        else if (creatureName.equals("Bugbear")){
+            //TODO: Make a player ofc!
+
+        }
+
         return null;
     }
 }
