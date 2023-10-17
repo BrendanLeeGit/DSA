@@ -5,7 +5,7 @@ public class AirLineCheckInSim {
 
     public class AirlineCheckinSim {
         /**
-         * Queue of frequent flyers.
+         * Queue of frequent flyers.s idk
          */
         private PassengerQueue frequentFlyerQueue =
                 new PassengerQueue("Frequent Flyer");
