@@ -7,14 +7,16 @@ public abstract class Creature {
     private int defense;
     private int speed;
     private int money;
+    private int level;
 
-    public Creature(String name, int life, int attack, int defense, int speed, int money) {
+    public Creature(String name, int life, int attack, int defense, int speed, int money, int level) {
         this.name = name;
-        this.life = life;
-        this.attack = attack;
-        this.defense = defense;
-        this.speed = speed;
+        this.life = (int) (life * (level * 1.2));
+        this.attack = (int) (attack * (level * 1.2));
+        this.defense = (int) (defense * (level * 1.2));
+        this.speed = (int) (speed * (level * 1.2));
         this.money = money;
+        this.level = level;
     }
 
     public Creature() {
@@ -28,6 +30,14 @@ public abstract class Creature {
 
     public void warCry(){
         System.out.println("Die!");
+    }
+
+    public void levelUp(){
+        level++;
+        life = (int) (life * 1.2);
+        attack = (int) (attack * 1.2);
+        defense = (int) (defense * 1.2);
+        speed = (int) (speed * 1.2);
     }
 
     public int getLife() {

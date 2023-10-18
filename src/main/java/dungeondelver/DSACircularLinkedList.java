@@ -18,6 +18,14 @@ public class DSACircularLinkedList<E> {
         size = 0;
     }
 
+    /**
+     * Clears the Linked List with the garbage collector and sets the size back to 0.
+     */
+    public void clear(){
+        size = 0;
+        head = null;
+    }
+
     public MyIterator getIterator(){
         return new MyIterator();
     }
