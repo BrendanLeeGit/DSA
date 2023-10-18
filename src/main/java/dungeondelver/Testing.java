@@ -2,6 +2,8 @@ package dungeondelver;
 
 public class Testing {
     public static void main(String[] args){
-        System.out.println(Dice.rollDice(1));
+        CreatureFactory creatureFactory = new CreatureFactory();
+        Creature goblin = creatureFactory.getCreature("Goblin");
+        goblin.warCry();
     }
 }

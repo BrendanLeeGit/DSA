@@ -26,7 +26,9 @@ public abstract class Creature {
         money = 5;
     }
 
-    public abstract void warCry();
+    public void warCry(){
+        System.out.println("Die!");
+    }
 
     public int getLife() {
         return life;
