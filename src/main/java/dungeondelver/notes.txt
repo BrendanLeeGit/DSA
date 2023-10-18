@@ -1,0 +1,10 @@
+We'll have the game have a player and the dundeon linked list
+
+cycle through the dungeon and then pass a player to it through the run method
+
+have the ability to remove the dungeon the player just went to and then move on to the left or right
+
+Dungeon Factory:
+    Utilizes Monster factory to choose a monster if needed and runs a fight sequence
+
+    Or can make it a trap or treasure room
