@@ -4,10 +4,14 @@ import java.util.Random;
 
 public class Dungeon {
     private DSACircularLinkedList<DungeonRoom> dungeonRooms;
-    private DungeonRoomFactory dungeonRoomFactory;
+    private final DungeonRoomFactory dungeonRoomFactory;
+    private DSACircularLinkedList<DungeonRoom>.MyIterator dungeonIterator;
+    private Player player;
+
 
     public Dungeon(){
         dungeonRooms = new DSACircularLinkedList<>();
+        dungeonRoomFactory = new DungeonRoomFactory();
     }
 
     /**
@@ -38,8 +42,33 @@ public class Dungeon {
         }
         //Change one of the indices to 3 to denote the exit
         producedKey[rand.nextInt(10)] = 3;
-
         return producedKey;
+    }
+
+    /**
+     * Returns a randomly generates dungeon using the above two methods.
+     */
+    public void buildRandomDungeon(Player player){
+        //Build the dungeon from a randomly generated key
+        buildDungeon(produceKey());
+
+        //Get the iterator so the player can traverse it
+        getIteratorFromCircularLinkedList();
+        this.player = player;
+    }
+
+    private void getIteratorFromCircularLinkedList(){
+        dungeonIterator = dungeonRooms.getIterator();
+    }
+
+    public void goRight(){
+        dungeonIterator.next();
+        dungeonIterator.getCurrentData().runDungeon(player);
+    }
+
+    public void goLeft(){
+        dungeonIterator.previous();
+        dungeonIterator.getCurrentData().runDungeon(player);
     }
 
 }

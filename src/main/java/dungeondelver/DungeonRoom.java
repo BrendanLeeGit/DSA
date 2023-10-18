@@ -17,5 +17,5 @@ public abstract class DungeonRoom {
         return type;
     }
 
-    public abstract Player runDungeon();
+    public abstract void runDungeon(Player player);
 }

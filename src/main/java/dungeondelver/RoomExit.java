@@ -7,7 +7,7 @@ public class RoomExit extends DungeonRoom {
     }
 
     @Override
-    public Player runDungeon() {
-        return null;
+    public void runDungeon(Player player) {
+        System.out.println(getType());
     }
 }

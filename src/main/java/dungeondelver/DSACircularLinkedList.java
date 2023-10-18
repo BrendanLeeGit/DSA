@@ -46,13 +46,15 @@ public class DSACircularLinkedList<E> {
         //If the list is empty, initialize first node with the wanted data
         if (size == 0){
             head = new Node<>(data);
+            head.prev = head;
+            head.next = head;
         }
         else{
-            //Otherwise, just add a new node to the previous of the head
-            Node<E> newNode = new Node<>(data);
+            //Keep reference to the prev of the head
             Node<E> tempHeadPrev = head.prev;
-            tempHeadPrev.next = newNode;
-            head.prev = newNode;
+
+            //Set the tempHeadPrev's next to the new node, and configure the new node's next and prev
+            tempHeadPrev.next = new Node<>(data, head, tempHeadPrev);
         }
         size++;
     }
@@ -158,9 +160,10 @@ public class DSACircularLinkedList<E> {
             this.data = data;
         }
 
-        public Node(V data, Node<V> next){
+        public Node(V data, Node<V> next, Node<V> prev){
             this.data = data;
             this.next = next;
+            this.prev = prev;
         }
     }
 
@@ -168,10 +171,10 @@ public class DSACircularLinkedList<E> {
      * Personal iterator for the linked list
      */
     public class MyIterator implements MyIterable<E> {
-        Node<E> currentNode;
+        private Node<E> currentNode;
 
         private MyIterator(){
-            currentNode = new Node<>(null, head);
+            currentNode = new Node<>(null, head, head.prev);
         }
 
         @Override
@@ -180,20 +183,36 @@ public class DSACircularLinkedList<E> {
             return currentNode.data;
         }
 
+        public E previous() {
+            currentNode = currentNode.prev;
+            return currentNode.data;
+        }
+
         @Override
         public boolean hasNext() {
             return (currentNode.next != null);
         }
 
+        public E getCurrentData(){
+            return currentNode.data;
+        }
+
         /**
-         * Removes the current node and sets the new current node to the next node of the deleted one... yeah.
+         * Removes the current node and moves to the next Node.
          */
-        private void removeCurrentNode(){
-            Node<E> tempPrev = currentNode.prev;
-            Node<E> tempNext = currentNode.next;
-            tempPrev.next = tempNext;
-            tempNext.prev = tempPrev;
-            currentNode = tempNext;
+        private void removeCurrentNodeGoToRight(){
+            Node<E> currentTemp = currentNode;
+            next();
+            removeNode(currentTemp);
+        }
+
+        /**
+         * Removes the current node and moves to the previous Node.
+         */
+        private void removeCurrentNodeGoToLeft(){
+            Node<E> currentTemp = currentNode;
+            previous();
+            removeNode(currentTemp);
         }
     }
 }
