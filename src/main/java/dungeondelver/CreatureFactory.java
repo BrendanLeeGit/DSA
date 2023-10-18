@@ -1,9 +1,13 @@
 package dungeondelver;
 
-public class CreatureFactory {
-    int monsterLevels;
+import java.util.Random;
 
-    public CreatureFactory(){}
+public class CreatureFactory {
+    String[] monsterNames;
+
+    public CreatureFactory(){
+        monsterNames = new String[]{"Goblin", "Bugbear"};
+    }
 
     public Creature getCreature(String creatureName, int level){
         if (creatureName.equals("Goblin")){
@@ -26,10 +30,12 @@ public class CreatureFactory {
     }
 
     /**
-     * Returns a String[] with all the current monster names.
-     * @return  the String[] with all the current monster names
+     * Returns a random creature of the bunch.
+     * @param level The level of the creature that will be returned
+     * @return      The randomly created creature
      */
-    public static String[] getMonsterNames(){
-        return new String[]{"Goblin", "Bugbear"};
+    public Creature getRandomCreature(int level){
+        Random rand = new Random();
+        return getCreature(monsterNames[rand.nextInt(2)], level);
     }
 }

@@ -2,8 +2,8 @@ package dungeondelver;
 
 public class RoomExit extends DungeonRoom {
 
-    RoomExit(String type, int goldValue) {
-        super(type, goldValue);
+    RoomExit() {
+        super("Exit", 20);
     }
 
     @Override
