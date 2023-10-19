@@ -1,6 +1,6 @@
 package dungeondelver;
 
-public abstract class Creature {
+public class Creature {
     private String name;
     private int life;
     private int attack;

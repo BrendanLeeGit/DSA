@@ -29,6 +29,5 @@ public class DungeonNavigator {
         else if (choice.equals("left")){
             dungeon.goLeft();
         }
-
     }
 }

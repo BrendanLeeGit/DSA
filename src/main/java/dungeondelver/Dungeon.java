@@ -70,5 +70,4 @@ public class Dungeon {
         dungeonIterator.previous();
         dungeonIterator.getCurrentData().runDungeon(player);
     }
-
 }
