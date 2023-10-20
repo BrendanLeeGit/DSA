@@ -15,6 +15,6 @@ public class Item {
     }
 
     public void runEffect(PlayerContainer playerContainer){
-        System.out.println("");
+        System.out.println("The " + name + " was broken and useless...");
     }
 }

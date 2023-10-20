@@ -12,7 +12,14 @@ public class PlayerContainer {
     }
 
     public void modifyLife(int value){
+        //Health needs extra care, as it can't go above max and can't go below 0
         player.setLife(player.getLife() + value);
+        if (player.getLife() > player.getMaxHealth()){
+            player.setLife(player.getMaxHealth());
+        }
+        else if (player.getLife() < 0){
+            player.setLife(0);
+        }
     }
 
     public void modifyAttack(int value){
@@ -25,6 +32,10 @@ public class PlayerContainer {
 
     public void modifySpeed(int value){
         player.setSpeed(player.getSpeed() + value);
+    }
+
+    public void modifyMaxHealth(int value){
+        player.setMaxHealth(player.getMaxHealth() + value);
     }
 
     public void levelUp(){
