@@ -8,6 +8,7 @@ public class Creature {
     private int speed;
     private int money;
     private int level;
+    private int maxHealth;
 
     public Creature(String name, int life, int attack, int defense, int speed, int money, int level) {
         this.name = name;
@@ -17,6 +18,7 @@ public class Creature {
         this.speed = (int) (speed * (level * 1.2));
         this.money = money;
         this.level = level;
+        maxHealth = life;
     }
 
     public Creature() {
@@ -86,5 +88,13 @@ public class Creature {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setMaxHealth(int value){
+        maxHealth = value;
+    }
+
+    public int getMaxHealth(){
+        return maxHealth;
     }
 }

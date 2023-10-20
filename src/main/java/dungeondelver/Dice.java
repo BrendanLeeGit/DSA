@@ -25,9 +25,9 @@ public class Dice {
         int diceResult = 0;
 
         //Interpret the String as dice rolls and add it all up
-        String[] split = diceRepresentation.split("d");
-        for (int i = 0; i < Integer.parseInt(split[0]); i++){
-            diceResult += rollDice(split[1]);
+        String[] splitString = diceRepresentation.split("d");
+        for (int i = 0; i < Integer.parseInt(splitString[0]); i++){
+            diceResult += rollDice(Integer.parseInt(splitString[1]));
         }
         return diceResult;
     }

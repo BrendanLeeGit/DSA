@@ -3,7 +3,7 @@ package dungeondelver;
 /**
  * Superclass for all items.
  */
-public abstract class Item {
+public class Item {
     private String name;
 
     public Item(String name){
@@ -14,5 +14,5 @@ public abstract class Item {
         return name;
     }
 
-    public abstract void affectPlayer(Player player);
+    public void runEffect(PlayerContainer playerContainer){}
 }

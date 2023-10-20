@@ -6,7 +6,7 @@ public class RoomItem extends DungeonRoom {
     }
 
     @Override
-    public void runDungeon(Player player) {
-        System.out.println(getType());
+    public void runDungeon(PlayerContainer playerContainer){
+        System.out.println(getType() + " room!");
     }
 }

@@ -49,12 +49,22 @@ public class DSACircularLinkedList<E> {
             head.prev = head;
             head.next = head;
         }
+
+        //If there's only one node, then need to make sure the head node is set to it
+        else if (size == 1){
+            Node<E> newNode = new Node<>(data, head, head);
+            head.next = newNode;
+            head.prev = newNode;
+        }
         else{
             //Keep reference to the prev of the head
             Node<E> tempHeadPrev = head.prev;
 
             //Set the tempHeadPrev's next to the new node, and configure the new node's next and prev
             tempHeadPrev.next = new Node<>(data, head, tempHeadPrev);
+
+            //Set head's prev to the new node
+            head.prev = tempHeadPrev.next;
         }
         size++;
     }
@@ -200,7 +210,7 @@ public class DSACircularLinkedList<E> {
         /**
          * Removes the current node and moves to the next Node.
          */
-        private void removeCurrentNodeGoToRight(){
+        public void removeCurrentNodeGoToRight(){
             Node<E> currentTemp = currentNode;
             next();
             removeNode(currentTemp);
@@ -209,10 +219,18 @@ public class DSACircularLinkedList<E> {
         /**
          * Removes the current node and moves to the previous Node.
          */
-        private void removeCurrentNodeGoToLeft(){
+        public void removeCurrentNodeGoToLeft(){
             Node<E> currentTemp = currentNode;
             previous();
             removeNode(currentTemp);
+        }
+
+        public String peakRight(){
+            return currentNode.next.data.toString();
+        }
+
+        public String peakLeft(){
+            return currentNode.prev.data.toString();
         }
     }
 }

@@ -7,7 +7,9 @@ public class RoomExit extends DungeonRoom {
     }
 
     @Override
-    public void runDungeon(Player player) {
-        System.out.println(getType());
+    public void runDungeon(PlayerContainer playerContainer){
+        System.out.println("You have reached the exit room! Congratulations!");
+        System.out.println("You will now move on to the next dungeon floor.");
+        playerContainer.getPlayer().setIsAtExit(true);
     }
 }
