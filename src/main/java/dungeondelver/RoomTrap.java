@@ -10,7 +10,7 @@ public class RoomTrap extends DungeonRoom {
     public void runDungeon(PlayerContainer playerContainer){
         System.out.println("It's a trap!");
         System.out.println("An arrow flies out towards you!");
-        if (Dice.rollDice("1d20") + 5 >= playerContainer.getPlayer().getDefense() + 10){
+        if (Dice.rollDice("1d20") + 5 >= playerContainer.getPlayer().getDefense()){
             int diceRoll = Dice.rollDice("2d4");
             playerContainer.modifyLife(-diceRoll);
             System.out.println("It hits.\nYou lost " + diceRoll + " hp.");

@@ -117,9 +117,12 @@ public class DungeonNavigator {
             System.out.println("Would you like to keep going? Type \"yes\" if so, and \"no\" if not.");
             String keepGoing = scan.next();
             if (keepGoing.equals("no")){
-                //TODO: Update the character
+                PlayerCreator.createPlayerFile(playerContainer.getPlayer());
                 System.out.println("You ended with " + playerContainer.getPlayer().getMoney() + " gold!");
                 break;
+            }
+            else {
+                System.out.println("Then we continue on!");
             }
             //If the player enters something wrong, they'll just keep going automatically
         }

@@ -5,7 +5,10 @@ public class DungeonGameInstance {
 
     public DungeonGameInstance(){
         //Create a player for the instance
-        Player player = new Player("Player", 20, 9, 40, 40, 0, 0);
+        PlayerCreator playerCreator = new PlayerCreator();
+        Player player = playerCreator.createPlayer();
+
+        //Hand the player over to the container and send the container into the navigator
         PlayerContainer playerContainer = new PlayerContainer(player);
         dungeonNavigator = new DungeonNavigator(playerContainer);
     }

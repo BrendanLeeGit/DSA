@@ -5,18 +5,26 @@ public class Player extends Creature {
     private boolean isAtExit;   //Keeps track of if the player is currently in the exit room
     private boolean fledThisDungeon; //Keeps track of whether this player fled this dungeon or not
 
-    Player() {
+    public Player() {
         super();
         success = true;
         isAtExit = false;
         fledThisDungeon = false;
     }
 
-    Player(String name, int life, int attack, int defense, int speed, int money, int level) {
+    public Player(String name, int life, int attack, int defense, int speed, int money, int level) {
         super(name, life, attack, defense, speed, money, level);
         success = true;
         isAtExit = false;
         fledThisDungeon = false;
+    }
+
+    public Player(String name){
+        super();
+        success = true;
+        isAtExit = false;
+        fledThisDungeon = false;
+        setName(name);
     }
 
     @Override

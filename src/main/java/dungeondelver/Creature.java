@@ -99,4 +99,8 @@ public class Creature {
     public int getMaxHealth(){
         return maxHealth;
     }
+
+    public int getLevel(){
+        return level;
+    }
 }
