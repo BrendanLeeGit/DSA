@@ -38,6 +38,10 @@ public class PlayerContainer {
         player.setMaxHealth(player.getMaxHealth() + value);
     }
 
+    public void modifyMoney(int value){
+        player.setMoney(player.getMoney() + value);
+    }
+
     public void levelUp(){
         player.levelUp();
     }

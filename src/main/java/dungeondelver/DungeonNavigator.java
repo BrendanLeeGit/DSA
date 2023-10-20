@@ -20,69 +20,104 @@ public class DungeonNavigator {
     }
 
     public void runDungeonNavigator(){
-        //Introduction stuff
+        //Introduction stuff and soem tips
         System.out.println("Welcome to the dungeon! We hope you enjoy your stay.");
+        System.out.println("Your gained stats will carry with you as you continue to play, but monsters will get " +
+                "stronger as well..");
         System.out.println("Enter in anything to begin.");
         scan.next();
 
-        //Player death will generally be handled more specifically in dungeon rooms as well
-        while (playerContainer.isAlive()){
-            //Build a very random dungeon
-            dungeon.buildRandomDungeon();
-            roomNumber = 1;
-            String choice = "right";
-            playerContainer.getPlayer().setIsAtExit(false);     //Player is probably not at the exit
+        //Encasing loop for if the player wants to continue playing.
+        for (;;){
+            playerContainer.modifyLife(playerContainer.getPlayer().getMaxHealth());      //Set the player to full hp
 
-            //And if they are, cycle a few rooms so that they aren't
-            dungeon.cycleToAvoidBeingAtExit();
+            //Print out all the player stats
+            System.out.println("Your stats:");
+            System.out.println("Max health: " + playerContainer.getPlayer().getMaxHealth());
+            System.out.println("Attack: " + playerContainer.getPlayer().getAttack());
+            System.out.println("Defense: " + playerContainer.getPlayer().getDefense());
+            System.out.println("Speed: " + playerContainer.getPlayer().getSpeed() + "\n");
 
-            //Continue until the player hits the exit
-            while (!playerContainer.getPlayer().getIsAtExit()){
+            //Player death will generally be handled more specifically in dungeon rooms as well
+            while (playerContainer.isAlive()){
+                //Build a very random dungeon
+                dungeon.buildRandomDungeon();
+                roomNumber = 1;
+                String choice = "right";
+                playerContainer.getPlayer().setIsAtExit(false);     //Player is probably not at the exit
 
-                //Stay optimistic! Start successful and only change if the character flees a dungeon
-                playerContainer.getPlayer().setSuccess(true);
-                dungeon.runCurrentDungeon();
+                //And if they are, cycle a few rooms so that they aren't
+                dungeon.cycleToAvoidBeingAtExit();
 
-                //Check if the player succumbs from the wounds they got in the dungeon
-                if (!playerContainer.isAlive()){
-                    System.out.println("You succumb to your wounds and die...");
-                    System.out.println("You got to room " + globalRoomNumber + "!");
-                    break;
-                }
+                //Continue until the player hits the exit
+                while (!playerContainer.getPlayer().getIsAtExit()){
 
-                //If the player passes the room, then they get to continue to the next!
-                if (playerContainer.getPlayer().wasSuccessful()){
-                    roomNumber++;
-                    globalRoomNumber++;
-                    //Prompt user for directions and interpret them
-                    System.out.println("Current health: " + playerContainer.getPlayer().getLife());
-                    System.out.println("\nEnter \"right\" to go right or \"left\" to go left");
-                    choice = scan.next();
+                    //Stay optimistic! Start successful and only change if the character flees a dungeon
+                    playerContainer.getPlayer().setSuccess(true);
+                    dungeon.runCurrentDungeon();
 
-                    //Clear dungeon room moves the player and deletes the current room
-                    dungeon.clearDungeonRoom(choice);
-                }
-                //If the player flees from the room, they go back to the previous room
-                else {
-                    System.out.println("Lick your wounds, but remember that you still have to trudge forwards!");
-
-                    //And if they're only at the first room, then they have nowhere else to go and must reenter.
-                    if (roomNumber != 0){
-                        if (choice.equals("right")){
-                            dungeon.goLeft();
-                        }
-                        else if (choice.equals("left")){
-                            dungeon.goRight();
-                        }
-                        else {
-                            System.out.println("Well, I suppose you go right back into the room!");
-                        }
+                    //Check if the player succumbs from the wounds they got in the dungeon
+                    if (!playerContainer.isAlive()){
+                        System.out.println("You succumb to your wounds and die...");
+                        System.out.println("You got to room " + roomNumber + "!");
+                        System.out.println("Total rooms traversed: " + globalRoomNumber + ".");
+                        break;
                     }
+
+                    //If the player passes the room, then they get to continue to the next!
+                    if (playerContainer.getPlayer().wasSuccessful()){
+                        roomNumber++;
+                        globalRoomNumber++;
+
+                        //Let the player see what's in each room with peek
+                        System.out.println("The right room houses a " + dungeon.peakRight() + ".");
+                        System.out.println("The left room houses a " + dungeon.peakLeft() + ".");
+
+                        //Prompt user for directions and interpret them
+                        System.out.println("Current health: " + playerContainer.getPlayer().getLife());
+                        System.out.println("\nEnter \"right\" to go right or \"left\" to go left");
+                        choice = scan.next();
+
+                        //Clear dungeon room moves the player and deletes the current room
+                        dungeon.clearDungeonRoom(choice);
+                    }
+                    //If the player flees from the room, they go back to the previous room
                     else {
-                        System.out.println("This is the first room of the dungeon... You'll have to reenter it.");
+                        //Need to reset success
+                        playerContainer.getPlayer().setSuccess(true);
+                        System.out.println("Lick your wounds, but remember that you still have to trudge forwards!");
+
+                        //Move them back to the room they gave up
+                        if (roomNumber != 1){
+                            if (choice.equals("right")){
+                                dungeon.goLeft();
+                                System.out.println("To the room in the opposite direction!");
+                            }
+                            else if (choice.equals("left")){
+                                dungeon.goRight();
+                                System.out.println("To the room in the opposite direction!");
+                            }
+                            else {
+                                System.out.println("Well, I suppose you go right back into the room!");
+                            }
+                        }
+                        //And if they're only at the first room, then they have nowhere else to go and must reenter.
+                        else {
+                            System.out.println("This is the first room of the dungeon... You'll have to reenter it.");
+                        }
                     }
                 }
             }
+
+            //Now we check if they wanna continue, and we print out stats and update the char if not
+            System.out.println("Would you like to keep going? Type \"yes\" if so, and \"no\" if not.");
+            String keepGoing = scan.next();
+            if (keepGoing.equals("no")){
+                //TODO: Update the character
+                System.out.println("You ended with " + playerContainer.getPlayer().getMoney() + " gold!");
+                break;
+            }
+            //If the player enters something wrong, they'll just keep going automatically
         }
     }
 }

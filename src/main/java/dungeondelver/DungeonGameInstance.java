@@ -1,9 +1,11 @@
 package dungeondelver;
 
 public class DungeonGameInstance {
-    private DungeonNavigator dungeonNavigator;
+    private final DungeonNavigator dungeonNavigator;
 
-    public DungeonGameInstance(PlayerContainer playerContainer){
+    public DungeonGameInstance(){
+        //Create a player for the instance
+        PlayerContainer playerContainer = new PlayerContainer(new Player());
         dungeonNavigator = new DungeonNavigator(playerContainer);
     }
 

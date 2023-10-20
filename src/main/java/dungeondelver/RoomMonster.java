@@ -1,12 +1,16 @@
 package dungeondelver;
 
+import java.util.Scanner;
+
 public class RoomMonster extends DungeonRoom {
     private final Creature monster;
     private PlayerContainer playerContainer;
+    private Scanner scan;
 
     RoomMonster(Creature monster, int goldValue) {
         super("Monster", goldValue);
         this.monster = monster;
+        this.scan = new Scanner(System.in);
     }
 
     @Override
@@ -17,6 +21,10 @@ public class RoomMonster extends DungeonRoom {
 
         //Have them fight to the death
         while (playerContainer.isAlive() && monster.getLife() > 0){
+            //Print out health so player can decide if they want to run
+            System.out.println("Your health: " + playerContainer.getPlayer().getLife());
+            System.out.println(monster.getName() + "'s health: " + monster.getLife());
+
             //Speed decides who goes first in the fight
             if (playerContainer.getPlayer().getSpeed() > monster.getSpeed()){
                 playerAttack();
@@ -26,6 +34,28 @@ public class RoomMonster extends DungeonRoom {
                 monsterAttack();
                 playerAttack();
             }
+
+            //Let the player run away after the first round of combat
+            System.out.println("Enter \"fight\" to continue fighting or \"flee\" to run.");
+            String choice = scan.next();
+            if (choice.equals("flee")){
+                System.out.println("You run away!");
+
+                //Set success to ensure the dungeon navigator knows this room wasn't completed
+                playerContainer.getPlayer().setSuccess(false);
+                break;
+            }
+            else if (choice.equals("fight")){
+                System.out.println("You continue to fight!");
+            }
+            else {
+                System.out.println("You're indecisive I suppose, because that was neither flee nor fight. " +
+                        "So you fight!");
+            }
+        }
+        if (monster.getLife() <= 0){
+            System.out.println("You've slain the " + monster.getName() + " and receive " + getGoldValue() + " gold!");
+            playerContainer.modifyMoney(getGoldValue());
         }
     }
 
@@ -55,6 +85,10 @@ public class RoomMonster extends DungeonRoom {
         else {
             System.out.println("You miss...");
         }
+    }
+
+    public String toString(){
+        return "creature";
     }
 
 }

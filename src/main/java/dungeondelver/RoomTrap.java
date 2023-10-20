@@ -19,4 +19,9 @@ public class RoomTrap extends DungeonRoom {
             System.out.println("The arrow bounces off your armor!");
         }
     }
+
+    @Override
+    public String toString(){
+        return "suspicious area";
+    }
 }

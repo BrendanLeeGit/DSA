@@ -18,7 +18,7 @@ public class Creature {
         this.speed = (int) (speed * (level * 1.2));
         this.money = money;
         this.level = level;
-        maxHealth = life;
+        maxHealth = this.life;
     }
 
     public Creature() {
@@ -27,7 +27,9 @@ public class Creature {
         attack = 5;
         defense = 4;
         speed = 5;
-        money = 5;
+        money = 0;
+        level = 1;
+        maxHealth = 10;
     }
 
     public void warCry(){

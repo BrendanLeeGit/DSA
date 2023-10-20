@@ -10,6 +10,12 @@ public class Player extends Creature {
         isAtExit = false;
     }
 
+    Player(String name, int life, int attack, int defense, int speed, int money, int level) {
+        super(name, life, attack, defense, speed, money, level);
+        success = true;
+        isAtExit = false;
+    }
+
     @Override
     public void warCry() {
         System.out.println("You suuuck!");

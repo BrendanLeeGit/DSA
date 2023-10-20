@@ -5,12 +5,14 @@ package dungeondelver;
  */
 public class DungeonRoomFactory {
     private final CreatureFactory creatureFactory;
+    private final ItemRoomFactory itemRoomFactory;
 
     //The more creatures we create, the stronger they'll be. Makes late game more difficult and ensures eventual death
     private int creatureCreationCount;
 
     public DungeonRoomFactory(){
         creatureFactory = new CreatureFactory();
+        itemRoomFactory = new ItemRoomFactory();
     }
 
     public DungeonRoom getDungeonRoom(int type){
@@ -24,7 +26,7 @@ public class DungeonRoomFactory {
             return new RoomMonster(creatureFactory.getRandomCreature(creatureCreationCount/10 + 1), 20);
         }
         else if (type == 2){
-            return new RoomItem();
+            return itemRoomFactory.getRandomItem();
         }
         else if (type == 3){
             return new RoomExit();

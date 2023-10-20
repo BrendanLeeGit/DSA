@@ -69,6 +69,14 @@ public class Dungeon {
         dungeonIterator.previous();
     }
 
+    public String peakLeft(){
+        return dungeonIterator.peakLeft();
+    }
+
+    public String peakRight(){
+        return dungeonIterator.peakRight();
+    }
+
     public void runCurrentDungeon(){
         dungeonIterator.getCurrentData().runDungeon(playerContainer);
     }
