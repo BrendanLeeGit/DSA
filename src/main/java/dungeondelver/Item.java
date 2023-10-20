@@ -14,5 +14,7 @@ public class Item {
         return name;
     }
 
-    public void runEffect(PlayerContainer playerContainer){}
+    public void runEffect(PlayerContainer playerContainer){
+        System.out.println("");
+    }
 }
