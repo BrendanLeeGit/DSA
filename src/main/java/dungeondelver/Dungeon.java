@@ -27,6 +27,9 @@ public class Dungeon {
         for (int j : key) {
             dungeonRooms.add(dungeonRoomFactory.getDungeonRoom(j));
         }
+
+        //Making a new dungeon, so reset the level of the monsters
+        dungeonRoomFactory.resetCreatureCreationCount();
     }
 
     /**

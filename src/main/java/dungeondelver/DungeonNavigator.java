@@ -23,9 +23,12 @@ public class DungeonNavigator {
         //Introduction stuff and soem tips
         System.out.println("Welcome to the dungeon! We hope you enjoy your stay.");
         System.out.println("Your gained stats will carry with you as you continue to play, but monsters will get " +
-                "stronger as well..");
+                "stronger as\nyou get farther into the dungeon.");
         System.out.println("Enter in anything to begin.");
         scan.next();
+
+        //Keep flee variable out here so the entire loop can check it
+        boolean fled = false;
 
         //Encasing loop for if the player wants to continue playing.
         for (;;){
@@ -42,6 +45,7 @@ public class DungeonNavigator {
             while (playerContainer.isAlive()){
                 //Build a very random dungeon
                 dungeon.buildRandomDungeon();
+                playerContainer.getPlayer().setFledThisDungeon(false); //New dungeon, so they can flee again
                 roomNumber = 1;
                 String choice = "right";
                 playerContainer.getPlayer().setIsAtExit(false);     //Player is probably not at the exit
@@ -87,7 +91,7 @@ public class DungeonNavigator {
                         playerContainer.getPlayer().setSuccess(true);
                         System.out.println("Lick your wounds, but remember that you still have to trudge forwards!");
 
-                        //Move them back to the room they gave up
+                        //Move them back to the room they didn't choose
                         if (roomNumber != 1){
                             if (choice.equals("right")){
                                 dungeon.goLeft();

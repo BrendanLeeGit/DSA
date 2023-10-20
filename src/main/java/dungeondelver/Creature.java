@@ -12,10 +12,10 @@ public class Creature {
 
     public Creature(String name, int life, int attack, int defense, int speed, int money, int level) {
         this.name = name;
-        this.life = (int) (life * (level * 1.2));
-        this.attack = (int) (attack * (level * 1.2));
-        this.defense = (int) (defense * (level * 1.2));
-        this.speed = (int) (speed * (level * 1.2));
+        this.life = life + (int) (life * (level * .1));
+        this.attack = attack + (int) (attack * (level * .1));
+        this.defense = defense + (int) (defense * (level * .1));
+        this.speed = speed + (int) (speed * (level * .1));
         this.money = money;
         this.level = level;
         maxHealth = this.life;
@@ -28,7 +28,7 @@ public class Creature {
         defense = 4;
         speed = 5;
         money = 0;
-        level = 1;
+        level = 0;
         maxHealth = 10;
     }
 

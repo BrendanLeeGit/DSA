@@ -13,6 +13,7 @@ public class DungeonRoomFactory {
     public DungeonRoomFactory(){
         creatureFactory = new CreatureFactory();
         itemRoomFactory = new ItemRoomFactory();
+        creatureCreationCount = 0;
     }
 
     public DungeonRoom getDungeonRoom(int type){
@@ -23,7 +24,7 @@ public class DungeonRoomFactory {
             creatureCreationCount++;
             //Calculate what level to make the creature and add a random monster
             //The level calculation is (# of monsters made) / 10
-            return new RoomMonster(creatureFactory.getRandomCreature(creatureCreationCount/10 + 1), 20);
+            return new RoomMonster(creatureFactory.getRandomCreature(creatureCreationCount/10), 20);
         }
         else if (type == 2){
             return itemRoomFactory.getRandomItem();
@@ -33,5 +34,9 @@ public class DungeonRoomFactory {
         }
         //We'll default to a trap if something goes wrong with the room creation process
         return new RoomTrap(0);
+    }
+
+    public void resetCreatureCreationCount(){
+        creatureCreationCount = 0;
     }
 }

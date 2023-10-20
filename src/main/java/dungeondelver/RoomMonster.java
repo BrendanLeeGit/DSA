@@ -35,23 +35,39 @@ public class RoomMonster extends DungeonRoom {
                 playerAttack();
             }
 
-            //Let the player run away after the first round of combat
-            System.out.println("Enter \"fight\" to continue fighting or \"flee\" to run.");
-            String choice = scan.next();
-            if (choice.equals("flee")){
-                System.out.println("You run away!");
+            //If someone died right after the exchange of blows, don't prompt for the flee or fight at all
+            if (playerContainer.isAlive() && monster.getLife() > 0){
+                //Let the player run away after the first round of combat
+                System.out.println("Enter \"fight\" to continue fighting or \"flee\" to run.");
+                String choice = scan.next();
+                if (choice.equals("flee")){
 
-                //Set success to ensure the dungeon navigator knows this room wasn't completed
-                playerContainer.getPlayer().setSuccess(false);
-                break;
+                    //Player is only allowed to flee once per dungeon, don't let them flee if they already did!
+                    if (playerContainer.getPlayer().getFledThisDungeon()){
+                        System.out.println("Hold on, you already fled earlier this floor. You can only flee once per " +
+                                "floor!");
+                    }
+                    else {
+                        System.out.println("You run away!");
+
+                        //Set success to ensure the dungeon navigator knows this room wasn't completed
+                        playerContainer.getPlayer().setSuccess(false);
+
+                        //Similarly make sure we record that the play fled already
+                        playerContainer.getPlayer().setFledThisDungeon(true);
+                        break;
+                    }
+
+                }
+                else if (choice.equals("fight")){
+                    System.out.println("You continue to fight!");
+                }
+                else {
+                    System.out.println("You're indecisive I suppose, because that was neither flee nor fight. " +
+                            "So you fight!");
+                }
             }
-            else if (choice.equals("fight")){
-                System.out.println("You continue to fight!");
-            }
-            else {
-                System.out.println("You're indecisive I suppose, because that was neither flee nor fight. " +
-                        "So you fight!");
-            }
+
         }
         if (monster.getLife() <= 0){
             System.out.println("You've slain the " + monster.getName() + " and receive " + getGoldValue() + " gold!");
@@ -80,7 +96,7 @@ public class RoomMonster extends DungeonRoom {
                 Dice.rollDice("1d20") + monster.getDefense()) {
             System.out.println("You manage to hit! The " + monster.getName() + " receives " +
                     playerContainer.getPlayer().getAttack() + " damage.");
-            monster.setLife(monster.getLife() - monster.getAttack());
+            monster.setLife(monster.getLife() - playerContainer.getPlayer().getAttack());
         }
         else {
             System.out.println("You miss...");
