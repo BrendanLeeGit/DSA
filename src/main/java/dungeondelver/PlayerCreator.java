@@ -29,7 +29,7 @@ public class PlayerCreator {
         //Prompt user for character name to make a new character or continue an already existing one
         System.out.println("Hello! Welcome. Enter in the name of your Character. If there's a file\n" +
                 "for them already, that will be used. If not, we'll generate a new character.");
-        String name = scan.next();
+        String name = scan.nextLine();
         File file = new File(directory, name + ".txt");
         if (file.exists()) {
             System.out.println("Character file found! Loading character...");
