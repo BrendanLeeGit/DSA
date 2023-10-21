@@ -29,13 +29,14 @@ public class PlayerCreator {
         //Prompt user for character name to make a new character or continue an already existing one
         System.out.println("Hello! Welcome. Enter in the name of your Character. If there's a file\n" +
                 "for them already, that will be used. If not, we'll generate a new character.");
+        System.out.println("Note, your character name must have no spaces whatsoever.");
         String name = scan.nextLine();
         File file = new File(directory, name + ".txt");
         if (file.exists()) {
             System.out.println("Character file found! Loading character...");
             String[] playerInfo = readFile(file);
             return new Player(playerInfo[0], Integer.parseInt(playerInfo[1]), Integer.parseInt(playerInfo[2]),
-                    Integer.parseInt(playerInfo[3]), Integer.parseInt(playerInfo[4]), Integer.parseInt(playerInfo[5]),
+                    Integer.parseInt(playerInfo[3]), Integer.parseInt(playerInfo[4]), 0,
                     Integer.parseInt(playerInfo[6]));
         }
         else {
