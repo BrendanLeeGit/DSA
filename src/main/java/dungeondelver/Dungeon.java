@@ -2,12 +2,19 @@ package dungeondelver;
 
 import java.util.Random;
 
+/**
+ * The class that represents the Dungeon's structure and layout.
+ */
 public class Dungeon {
     private DSACircularLinkedList<DungeonRoom> dungeonRooms;
     private final DungeonRoomFactory dungeonRoomFactory;
     private DSACircularLinkedList<DungeonRoom>.MyIterator dungeonIterator;
     private PlayerContainer playerContainer;
 
+    /**
+     * Initializes a Dungeon with the inputted PlayerContainer.
+     * @param playerContainer   The PlayerContainer that holds the Player that will traverse the dungeon
+     */
     public Dungeon(PlayerContainer playerContainer){
         dungeonRooms = new DSACircularLinkedList<>();
         dungeonRoomFactory = new DungeonRoomFactory();
@@ -59,6 +66,9 @@ public class Dungeon {
         getIteratorFromCircularLinkedList();
     }
 
+    /**
+     * Updates the Iterator, making sure that the discarded old dungeons aren't still in use.
+     */
     private void getIteratorFromCircularLinkedList(){
         dungeonIterator = dungeonRooms.getIterator();
         dungeonIterator.next();
@@ -80,10 +90,17 @@ public class Dungeon {
         return dungeonIterator.peakRight();
     }
 
+    /**
+     * Calls the run method of the current dungeon room.
+     */
     public void runCurrentDungeon(){
         dungeonIterator.getCurrentData().runDungeon(playerContainer);
     }
 
+    /**
+     * Occasionally, the Player may start in an exit room in the dungeon. To prevent this, we cycle them
+     * a bit before they start traversing.
+     */
     public void cycleToAvoidBeingAtExit(){
         //If the first room is the exit, then we'll just shift over to the right a few times before it starts
         if (dungeonIterator.getCurrentData() instanceof RoomExit){
@@ -93,6 +110,10 @@ public class Dungeon {
         }
     }
 
+    /**
+     * Removes the current dungeon room. Use this once the Player successfully clears a room and needs to move on.
+     * @param direction Whether the Player will move to the left or the right after clearing the room.
+     */
     public void clearDungeonRoom(String direction){
         try {
             if (direction.equals("left")){

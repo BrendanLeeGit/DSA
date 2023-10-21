@@ -3,7 +3,7 @@ package dungeondelver;
 import java.util.Scanner;
 
 /**
- * Used to navigate the dungeons properly. :D
+ * This essentially contains the game loop. Most of the logic and player interaction is here.
  */
 public class DungeonNavigator {
     private Dungeon dungeon;
@@ -12,6 +12,10 @@ public class DungeonNavigator {
     private int roomNumber; //Mainly used to check if the player runs from the very first room
     private int globalRoomNumber; //Used to check total rooms progressed through
 
+    /**
+     * Initializes the DungeonNavigator with the inputted PlayerContainer. Also generates a Dungeon for its own use.
+     * @param playerContainer   The PlayerContainer that contains the Player to be used
+     */
     public DungeonNavigator(PlayerContainer playerContainer){
         this.dungeon = new Dungeon(playerContainer);
         this.scan = new Scanner(System.in);
@@ -19,6 +23,9 @@ public class DungeonNavigator {
         globalRoomNumber = 1;
     }
 
+    /**
+     * This is essentially the entire game loop. Call it when you want the game to begin.
+     */
     public void runDungeonNavigator(){
         //Introduction stuff and soem tips
         System.out.println("Welcome to the dungeon! We hope you enjoy your stay.");

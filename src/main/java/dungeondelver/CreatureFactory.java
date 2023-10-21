@@ -2,13 +2,25 @@ package dungeondelver;
 
 import java.util.Random;
 
+/**
+ * Factory that returns different Creatures depending on what input it receives.
+ */
 public class CreatureFactory {
     String[] monsterNames;
 
+    /**
+     * Initializes the CreatureFactory with its default monster list.
+     */
     public CreatureFactory(){
         monsterNames = new String[]{"Goblin", "Bugbear"};
     }
 
+    /**
+     * Returns a Creature of the inputted name and level.
+     * @param creatureName  The name of the wanted Creature
+     * @param level         The level of the returned Creature
+     * @return              A Creature of the inputted name and level
+     */
     public Creature getCreature(String creatureName, int level){
         if (creatureName.equals("Goblin")){
             return new Creature("Goblin", 10, 4, 2, 10, 5, level) {

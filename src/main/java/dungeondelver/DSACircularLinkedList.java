@@ -225,10 +225,18 @@ public class DSACircularLinkedList<E> {
             removeNode(currentTemp);
         }
 
+        /**
+         * Returns  the String form of the data of the Node to the right of the current Node.
+         * @return  the String form of the data of the Node to the right of the current Node
+         */
         public String peakRight(){
             return currentNode.next.data.toString();
         }
 
+        /**
+         * Returns  the String form of the data of the Node to the left of the current Node.
+         * @return  the String form of the data of the Node to the left of the current Node
+         */
         public String peakLeft(){
             return currentNode.prev.data.toString();
         }

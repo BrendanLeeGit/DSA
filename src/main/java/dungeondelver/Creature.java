@@ -1,5 +1,8 @@
 package dungeondelver;
 
+/**
+ * Class to represent any living creature in the game.
+ */
 public class Creature {
     private String name;
     private int life;
@@ -10,6 +13,16 @@ public class Creature {
     private int level;
     private int maxHealth;
 
+    /**
+     * Constructs a Creature with the inputted stats
+     * @param name      The name of the Creature
+     * @param life      The health points the Creature has
+     * @param attack    How hard and how accurately the Creature hits
+     * @param defense   How well the Creature resists attacks
+     * @param speed     How likely the Creature is to go first in a fight
+     * @param money     How much gold the Creature has
+     * @param level     What level the Creature is
+     */
     public Creature(String name, int life, int attack, int defense, int speed, int money, int level) {
         this.name = name;
         this.life = life + (int) (life * (level * .1));
@@ -21,27 +34,36 @@ public class Creature {
         maxHealth = this.life;
     }
 
+    /**
+     * Initializes a default creature with very minor stats.
+     */
     public Creature() {
         name = "Default";
         life = 10;
-        attack = 5;
-        defense = 4;
+        attack = 4;
+        defense = 3;
         speed = 5;
         money = 0;
         level = 0;
         maxHealth = 10;
     }
 
+    /**
+     * Used for giving each Creature its own signature voice line.
+     */
     public void warCry(){
         System.out.println("Die!");
     }
 
+    /**
+     * Levels up the creature, increasing all of its combat stats.
+     */
     public void levelUp(){
         level++;
-        life = (int) (life * 1.2);
-        attack = (int) (attack * 1.2);
-        defense = (int) (defense * 1.2);
-        speed = (int) (speed * 1.2);
+        life += (int) (life * (level * .1));
+        attack += (int) (attack * (level * .1));
+        defense += (int) (defense * (level * .1));
+        speed += (int) (speed * (level * .1));
     }
 
     public int getLife() {
