@@ -1,5 +1,10 @@
 package dungeondelver;
 
+/**
+ * Other than containing helpful methods for manipulating the contained Player, the main bonus is allowing
+ * the Player to be passed around the program and manipulated by different areas. Without the Container,
+ * the Player wouldn't keep the changes it undergoes from different classes when passed as a parameter.
+ */
 public class PlayerContainer {
     private Player player;
 
@@ -7,6 +12,10 @@ public class PlayerContainer {
         this.player = player;
     }
 
+    /**
+     * Checks if the player's current health is above 0.
+     * @return  Whether the player's current health is above 0 or not
+     */
     public boolean isAlive(){
         return (player.getLife() > 0);
     }
