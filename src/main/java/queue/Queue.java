@@ -21,6 +21,10 @@ public class Queue <E>{
         return linkedList.getHeadData();
     }
 
+    public int getSize(){
+        return linkedList.getSize();
+    }
+
     public void printQueue(){
         System.out.println("/---Queue---\\");
         linkedList.printList();
